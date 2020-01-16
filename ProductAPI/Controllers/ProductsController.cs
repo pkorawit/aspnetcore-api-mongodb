@@ -41,5 +41,13 @@ namespace ProductAPI.Controllers
             return product;
         }
 
+        [HttpPost]
+        public ActionResult<Product> Create(Product product)
+        {
+            _productService.Create(product);
+
+            return CreatedAtRoute("GetProduct", new { id = product.Id.ToString() }, product);
+        }
+
     }
 }
